@@ -1,0 +1,128 @@
+{
+  "map": [
+    ["f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f"],
+    ["f", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e"],
+    ["f", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e"],
+    ["f", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e"],
+    ["f", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e"],
+    ["f", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e"],
+    ["f", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e"],
+    ["f", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e"],
+    ["f", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e"],
+    ["E", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e"],
+    ["E", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e"],
+    ["E", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e"],
+    ["E", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e"],
+    ["f", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e"],
+    ["f", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e"],
+    ["f", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e"],
+    ["f", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e"],
+    ["f", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e"],
+    ["f", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e"],
+    ["f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f"]
+  ],
+  "entrance": [[0, 9], [1, 4]],
+  "exit": [[19, 1], [1, 18]],
+  "wind direction": "left",
+  "no brakes": false,
+  "comment": "WIND IS STRONK HERE",
+  "checkpoint": [45, 315],
+
+  "decorations": {
+    "armour1": {
+      "image-path": "assets/images/armour-holder.png",
+      "can-die": true,
+      "rotation": 180,
+      "rect": [50, 450, 80, 70],
+      "hit_rect": [100, 450, 80, 70]
+    },
+
+    "armour2": {
+      "image-path": "assets/images/armour-holder.png",
+      "can-die": true,
+      "rotation": 180,
+      "rect": [150, 450, 80, 70],
+      "hit_rect": [150, 450, 80, 70]
+    },
+
+    "armour3": {
+      "image-path": "assets/images/armour-holder.png",
+      "can-die": true,
+      "rotation": 180,
+      "rect": [250, 450, 80, 70],
+      "hit_rect": [250, 450, 80, 70]
+    },
+
+    "armour4": {
+      "image-path": "assets/images/armour-holder.png",
+      "can-die": true,
+      "rotation": 180,
+      "rect": [350, 450, 80, 70],
+      "hit_rect": [350, 450, 80, 70]
+    },
+
+    "armour5": {
+      "image-path": "assets/images/armour-holder.png",
+      "can-die": true,
+      "rotation": 180,
+      "rect": [450, 450, 80, 70],
+      "hit_rect": [450, 450, 80, 70]
+    },
+
+    "armour6": {
+      "image-path": "assets/images/armour-holder.png",
+      "can-die": true,
+      "rotation": 180,
+      "rect": [550, 450, 80, 70],
+      "hit_rect": [550, 450, 80, 70]
+    },
+
+    "armour7": {
+      "image-path": "assets/images/armour-holder.png",
+      "can-die": true,
+      "rotation": 0,
+      "rect": [50, 80, 80, 70],
+      "hit_rect": [50, 80, 80, 70]
+    },
+
+    "armour8": {
+      "image-path": "assets/images/armour-holder.png",
+      "can-die": true,
+      "rotation": 0,
+      "rect": [150, 80, 80, 70],
+      "hit_rect": [150, 80, 80, 70]
+    },
+
+    "armour9": {
+      "image-path": "assets/images/armour-holder.png",
+      "can-die": true,
+      "rotation": 0,
+      "rect": [250, 80, 80, 70],
+      "hit_rect": [250, 80, 80, 70]
+    },
+
+    "armour10": {
+      "image-path": "assets/images/armour-holder.png",
+      "can-die": true,
+      "rotation": 0,
+      "rect": [350, 80, 80, 70],
+      "hit_rect": [350, 80, 80, 70]
+    },
+
+    "armour11": {
+      "image-path": "assets/images/armour-holder.png",
+      "can-die": true,
+      "rotation": 0,
+      "rect": [450, 80, 80, 70],
+      "hit_rect": [450, 80, 80, 70]
+    },
+
+    "armour12": {
+      "image-path": "assets/images/armour-holder.png",
+      "can-die": true,
+      "rotation": 0,
+      "rect": [550, 80, 80, 70],
+      "hit_rect": [550, 80, 80, 70]
+    }
+  }
+}
