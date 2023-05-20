@@ -1,6 +1,7 @@
 from level_loader import load_level
 import pygame as pg
-
+import os
+here = os.path.abspath(".") + "/"
 
 class Level:
     def __init__(self, tile_width):
@@ -63,7 +64,7 @@ class Level:
     def load_decorations(self):
         self.decorations_surface = pg.Surface((600, 600), pg.SRCALPHA)
         for decoration in self.decorations.values():
-            d_image = pg.image.load(decoration["image-path"])  # d stands for decoration
+            d_image = pg.image.load(here+decoration["image-path"])  # d stands for decoration
             d_image.convert_alpha()
 
             d_image = pg.transform.rotate(d_image, decoration["rotation"])

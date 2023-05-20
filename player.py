@@ -1,5 +1,6 @@
 import pygame as pg
-
+import os
+here = os.path.abspath(".") + "/"
 
 class Player:
     def __init__(self, TILE_WIDTH, width, height, spawn):
@@ -16,15 +17,15 @@ class Player:
         self.rotation_speed = 0
         self.max_rotation_speed = 10
 
-        self.brakes_sound = pg.mixer.Sound("assets/music/brakes.wav")
+        self.brakes_sound = pg.mixer.Sound(here+"assets/music/brakes.wav")
         self.no_brakes = False
 
-        self.image = pg.transform.scale(pg.transform.rotate(pg.image.load("assets/images/player.png"), -90), (TILE_WIDTH, TILE_WIDTH))
+        self.image = pg.transform.scale(pg.transform.rotate(pg.image.load(here+"assets/images/player.png"), -90), (TILE_WIDTH, TILE_WIDTH))
 
-        self.cracks = [pg.transform.scale(pg.transform.rotate(pg.image.load("assets/images/player1.png"), -90), (3 * TILE_WIDTH, 3 * TILE_WIDTH)),
-                       pg.transform.scale(pg.transform.rotate(pg.image.load("assets/images/player2.png"), -90), (3 * TILE_WIDTH, 3 * TILE_WIDTH)),
-                       pg.transform.scale(pg.transform.rotate(pg.image.load("assets/images/player3.png"), -90), (3 * TILE_WIDTH, 3 * TILE_WIDTH)),
-                       pg.transform.scale(pg.transform.rotate(pg.image.load("assets/images/player4.png"), -90), (3 * TILE_WIDTH, 3 * TILE_WIDTH))]
+        self.cracks = [pg.transform.scale(pg.transform.rotate(pg.image.load(here+"assets/images/player1.png"), -90), (3 * TILE_WIDTH, 3 * TILE_WIDTH)),
+                       pg.transform.scale(pg.transform.rotate(pg.image.load(here+"assets/images/player2.png"), -90), (3 * TILE_WIDTH, 3 * TILE_WIDTH)),
+                       pg.transform.scale(pg.transform.rotate(pg.image.load(here+"assets/images/player3.png"), -90), (3 * TILE_WIDTH, 3 * TILE_WIDTH)),
+                       pg.transform.scale(pg.transform.rotate(pg.image.load(here+"assets/images/player4.png"), -90), (3 * TILE_WIDTH, 3 * TILE_WIDTH))]
 
         self.FPS = 10
         self.frame = 0

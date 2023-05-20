@@ -4,7 +4,10 @@ from settings import *
 from level import Level
 import time
 from font import *
+from pygame.locals import *
 
+import os
+here = os.path.abspath(".") + "/"
 
 music_channel = 0
 player_sfx_channel = 1
@@ -33,9 +36,9 @@ class Game:
         self.finish_time = 0
         self.start_time = 0
 
-        self.display = pg.display.set_mode((self.WIDTH, self.HEIGHT))
+        self.display = pg.display.set_mode((self.WIDTH, self.HEIGHT),FULLSCREEN | SCALED)
         pg.display.set_caption("winter escape")
-        pg.display.set_icon(pg.transform.scale_by(pg.image.load("assets/images/player.png"), 5))
+        pg.display.set_icon(pg.transform.scale_by(pg.image.load(here+"assets/images/player.png"), 5))
 
         self.overlay = pg.Surface((self.WIDTH, self.HEIGHT), pg.SRCALPHA)
         self.overlay.fill(black)
