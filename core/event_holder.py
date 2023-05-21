@@ -25,6 +25,10 @@ class EventHolder :
         self.dt = 0
 
     @property
+    def get_pressed( self ):
+        return pg.key.get_pressed()
+
+    @property
     def delta_time( self ):
         return self.dt
         # delta = 1 / (self.final_fps if self.final_fps!=0 else 60)
@@ -35,6 +39,7 @@ class EventHolder :
         return Rect(self.mouse_pos.x - 1, self.mouse_pos.y - 1,2,2)
 
     def get_events( self ) :
+
         self.pressed_keys.clear()
         self.released_keys.clear()
         self.mouse_pressed_keys = [False, False, False]

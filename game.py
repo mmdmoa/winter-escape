@@ -9,6 +9,7 @@ from font import *
 import core.pygame_ce.functions as pf
 import core.common.resources as cr
 from core.common.constants import *
+from core.event_holder import EventHolder
 
 import os
 
@@ -43,6 +44,8 @@ class Game :
         self.start_time = 0
 
         cr.screen = pg.display.set_mode((self.WIDTH, self.HEIGHT), FULLSCREEN | SCALED)
+        cr.event_holder = EventHolder()
+
         pg.display.set_caption("winter escape")
         pg.display.set_icon(pf.scale_by(pg.image.load(here + "assets/images/player.png"), 5))
 
@@ -71,65 +74,61 @@ class Game :
         self.game_is_beaten = False
 
 
+    def check_events( self ) :
+        if self.level.level_n == 16 :
+            self.overlay.fill((250, 248, 246))
+            self.overlay.set_alpha(((self.player.rect.x - 30) / 2.11764705882) if ((
+                                                                                           self.player.rect.x - 30) / 2.11764705882) > 0 else 0)  # WTF IS THIS
+
+        if self.level.level_n == 17 :
+            self.game_is_beaten = True
+            self.record_rime = False
+            self.overlay.set_alpha(255)
+            running = False
+
+        if self.record_rime :
+            self.finish_time = time.perf_counter()
+
+        self.dt = self.clock.tick(self.FPS) / 1000.0
+
+        if self.can_play :
+            # check anything important
+            self.player.rect = self.level.check_if_player_exited_the_level_if_so_load_the_next_level_except_if_its_the_last_level_show_win_screen_so_he_will_be_proud_and_dont_forget_about_showing_his_terrible_finish_time(
+                self.player.rect)
+            self.player.no_brakes = self.level.no_brakes
+
+            self.player.collision(self.level.map, self.level.hittable_decorations)
+            if self.player.dead :
+                self.can_play = False
+
+                if self.incremented_death_count is False :
+                    self.death_count += 1
+                    self.incremented_death_count = True
+
+                if self.player_dead_sound_played is False :
+                    pg.mixer.Channel(1).play(ice_breaks_sound)
+                    self.player_dead_sound_played = True
+
+            self.simulate_wind()
+
+
     def run( self ) :
         pg.mixer.Channel(0).play(main_song, -1)
-        running = True
-        while running :
-            if self.level.level_n == 16 :
-                self.overlay.fill((250, 248, 246))
-                self.overlay.set_alpha(((self.player.rect.x - 30) / 2.11764705882) if ((
-                 self.player.rect.x - 30) / 2.11764705882) > 0 else 0) # WTF IS THIS
 
-            if self.level.level_n == 17 :
-                self.game_is_beaten = True
-                self.record_rime = False
-                self.overlay.set_alpha(255)
-                running = False
-
-            if self.record_rime :
-                self.finish_time = time.perf_counter()
-
-            self.dt = self.clock.tick(self.FPS) / 1000.0
-
-            keys_pressed = pg.key.get_pressed()
-
-            # if pg.mouse.get_pressed()[0] :
-            #     print(pg.mouse.get_pos())
-
-            event_list = pg.event.get()
-            for event in event_list :
-                if event.type == pg.QUIT :
-                    running = False
-                    self.exited = True
-
-
-            if self.can_play :
-                # check anything important
-                self.player.rect = self.level.check_if_player_exited_the_level_if_so_load_the_next_level_except_if_its_the_last_level_show_win_screen_so_he_will_be_proud_and_dont_forget_about_showing_his_terrible_finish_time(
-                    self.player.rect)
-                self.player.no_brakes = self.level.no_brakes
-
-                self.player.collision(self.level.map, self.level.hittable_decorations)
-                if self.player.dead :
-                    self.can_play = False
-
-                    if self.incremented_death_count is False :
-                        self.death_count += 1
-                        self.incremented_death_count = True
-
-                    if self.player_dead_sound_played is False :
-                        pg.mixer.Channel(1).play(ice_breaks_sound)
-                        self.player_dead_sound_played = True
-
-                self.simulate_wind()
+        while not cr.event_holder.should_quit :
+            cr.event_holder.get_events()
+            self.check_events()
 
             # rendering/updating
-            self.game_thing(keys_pressed)
+            self.render(cr.event_holder.get_pressed)
 
             pg.display.update()
 
 
-    def game_thing( self, keys_pressed ) :
+
+
+
+    def render( self, keys_pressed ) :
         renderer.draw_level(self.level)
 
         if self.player.dead is True and self.can_play is False :
