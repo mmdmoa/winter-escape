@@ -7,6 +7,7 @@ import time
 from font import *
 
 import core.pygame_ce.functions as pf
+import core.common.resources as cr
 from core.common.constants import *
 
 import os
@@ -41,7 +42,7 @@ class Game :
         self.finish_time = 0
         self.start_time = 0
 
-        self.display = pg.display.set_mode((self.WIDTH, self.HEIGHT), FULLSCREEN | SCALED)
+        cr.screen = pg.display.set_mode((self.WIDTH, self.HEIGHT), FULLSCREEN | SCALED)
         pg.display.set_caption("winter escape")
         pg.display.set_icon(pf.scale_by(pg.image.load(here + "assets/images/player.png"), 5))
 
@@ -72,13 +73,13 @@ class Game :
 
     def run( self ) :
         pg.mixer.Channel(0).play(main_song, -1)
-        fingers = {}
         running = True
         while running :
             if self.level.level_n == 16 :
                 self.overlay.fill((250, 248, 246))
                 self.overlay.set_alpha(((self.player.rect.x - 30) / 2.11764705882) if ((
-                                                                                                   self.player.rect.x - 30) / 2.11764705882) > 0 else 0)
+                 self.player.rect.x - 30) / 2.11764705882) > 0 else 0) # WTF IS THIS
+
             if self.level.level_n == 17 :
                 self.game_is_beaten = True
                 self.record_rime = False
@@ -95,17 +96,11 @@ class Game :
             # if pg.mouse.get_pressed()[0] :
             #     print(pg.mouse.get_pos())
 
-            for event in pg.event.get() :
+            event_list = pg.event.get()
+            for event in event_list :
                 if event.type == pg.QUIT :
                     running = False
                     self.exited = True
-
-                if event.type == pg.FINGERDOWN or event.type == pg.FINGERMOTION:
-                    fingers[event.finger_id] = [event.x * self.display.get_width(),
-                        event.y * self.display.get_height()]
-
-                if event.type == pg.FINGERUP :
-                    fingers[event.finger_id] = None
 
 
             if self.can_play :
@@ -135,7 +130,7 @@ class Game :
 
 
     def game_thing( self, keys_pressed ) :
-        renderer.draw_level(self.level, self.display)
+        renderer.draw_level(self.level, cr.screen)
 
         if self.player.dead is True and self.can_play is False :
             self.overlay_a += 500 * self.dt
@@ -170,15 +165,15 @@ class Game :
                     (int(self.player.rect.centerx // 2), int(self.player.rect.centery // 2)),
                     (255, 255, 255))
 
-        self.player.draw(self.display, self.dt)
+        self.player.draw(cr.screen, self.dt)
 
-        self.wind.draw(self.display, self.level.wind_direction)
+        self.wind.draw(cr.screen, self.level.wind_direction)
 
-        self.display.blit(pf.scale_by(gnoa(get_time_str(self.finish_time - self.start_time)), 3),
+        cr.screen.blit(pf.scale_by(gnoa(get_time_str(self.finish_time - self.start_time)), 3),
             (0, 0))
-        self.display.blit(pf.scale_by(gnoa(self.death_count), 3), (0, 50))
+        cr.screen.blit(pf.scale_by(gnoa(self.death_count), 3), (0, 50))
 
-        self.display.blit(self.overlay, (0, 0))
+        cr.screen.blit(self.overlay, (0, 0))
 
 
     def win_screen( self ) :
@@ -188,9 +183,9 @@ class Game :
                     pg.quit()
                     quit()
 
-            self.display.blit(self.overlay, (0, 0))
+            cr.screen.blit(self.overlay, (0, 0))
 
-            renderer.show_that_final_thingy(self.display, self.death_count,
+            renderer.show_that_final_thingy(cr.screen, self.death_count,
                 self.finish_time - self.start_time)
 
             pg.display.update()
