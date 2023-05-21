@@ -130,7 +130,7 @@ class Game :
 
 
     def game_thing( self, keys_pressed ) :
-        renderer.draw_level(self.level, cr.screen)
+        renderer.draw_level(self.level)
 
         if self.player.dead is True and self.can_play is False :
             self.overlay_a += 500 * self.dt
@@ -165,9 +165,9 @@ class Game :
                     (int(self.player.rect.centerx // 2), int(self.player.rect.centery // 2)),
                     (255, 255, 255))
 
-        self.player.draw(cr.screen, self.dt)
+        self.player.draw(self.dt)
 
-        self.wind.draw(cr.screen, self.level.wind_direction)
+        self.wind.draw(self.level.wind_direction)
 
         cr.screen.blit(pf.scale_by(gnoa(get_time_str(self.finish_time - self.start_time)), 3),
             (0, 0))

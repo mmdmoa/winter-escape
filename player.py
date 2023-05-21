@@ -1,5 +1,6 @@
-import pygame as pg
-import os
+from core.common.names import *
+import core.common.resources as cr
+
 here = os.path.abspath(".") + "/"
 
 class Player:
@@ -119,7 +120,8 @@ class Player:
                     self.dead = True
                     break
 
-    def draw(self, surf, dt):
+    def draw(self, dt):
+        surf = cr.screen
         if self.dead:
             self.frame += self.FPS*dt
             placeholder = self.cracks[int(self.frame)]

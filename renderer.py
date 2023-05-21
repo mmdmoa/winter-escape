@@ -1,5 +1,7 @@
-import pygame.transform
+from core.common.names import *
+import core.common.resources as cr
 
+import pygame.transform
 from settings import *
 from font import *
 import core.pygame_ce.functions as pf
@@ -62,7 +64,8 @@ def get_wall_image(level_map, row_i, column_i):
         return wall.subsurface(pg.Rect((1 * 16, 1 * 16, 16, 16)))
 
 
-def draw_level(level, surf):
+def draw_level(level):
+    surf = cr.screen
     if level.no_brakes is False:
         surf.blit(floor, (0, 0))
         pass
@@ -82,7 +85,8 @@ def draw_level(level, surf):
     surf.blit(pygame.transform.scale2x(level.marks), (0, 0))
 
 
-def show_that_final_thingy(surf, death_count, time_spent):
+def show_that_final_thingy( death_count, time_spent):
+    surf = cr.screen
     """
     shows finish time and death count
     """
@@ -134,7 +138,8 @@ class Wind:
 
         self.image.set_alpha(strength * 26)
 
-    def draw(self, surf, direction):
+    def draw(self, direction):
+        surf = cr.screen
         if direction in ["up", "down", "left", "right"]:
             try:
                 surf.blit(self.image, (0, 0))
