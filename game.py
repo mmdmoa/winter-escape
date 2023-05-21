@@ -157,8 +157,8 @@ class Game:
 
         self.wind.draw(self.display, self.level.wind_direction)
 
-        self.display.blit(pg.transform.scale_by(get_numbers_on_a_special_tablet_so_it_looks_cool_sorry_for_the_bad_name(get_time_str(self.finish_time-self.start_time)), 3), (0, 0))
-        self.display.blit(pg.transform.scale_by(get_numbers_on_a_special_tablet_so_it_looks_cool_sorry_for_the_bad_name(self.death_count), 3), (0, 50))
+        self.display.blit(pg.transform.scale_by(gnoa(get_time_str(self.finish_time - self.start_time)), 3), (0, 0))
+        self.display.blit(pg.transform.scale_by(gnoa(self.death_count), 3), (0, 50))
 
         self.display.blit(self.overlay, (0, 0))
 

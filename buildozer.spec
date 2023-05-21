@@ -13,7 +13,7 @@ package.domain = com.yolo
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas,jpeg,json,wav
+source.include_exts = py,png,jpg,kv,atlas,jpeg,json,wav,mp3
 
 # (list) List of inclusions using pattern matching
 #source.include_patterns = assets/*,images/*.png
@@ -37,7 +37,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,pygame_ce,jnius,sdl2,sdl2_image,sdl2_mixer,sdl2_ttf,png,jpeg
+requirements = python3,pygame,jnius,sdl2,sdl2_image,sdl2_mixer,sdl2_ttf,png,jpeg
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -449,4 +449,4 @@ warn_on_root = 1
 #
 #    Then, invoke the command line with the "demo" profile:
 #
-#buildozer --profile demo android debug
+# buildozer --profile demo android debug

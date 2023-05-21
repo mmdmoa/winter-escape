@@ -2,7 +2,7 @@ import pygame as pg
 from settings import that_final_thingy, font
 
 
-def get_numbers_on_a_special_tablet_so_it_looks_cool_sorry_for_the_bad_name(n):
+def gnoa(n ):
     try:
         n = str(int(n) if n > 0 else 0)
     except (ValueError, TypeError):

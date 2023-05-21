@@ -10,7 +10,7 @@ class Player:
         self.leaving_marks = False
 
         self.spawn = spawn  # spawn bruh
-        self.rect = pg.FRect(self.spawn, (self.TILE_WIDTH, self.TILE_WIDTH))
+        self.rect = pg.Rect(self.spawn, (self.TILE_WIDTH, self.TILE_WIDTH))
         self.velocity = pg.Vector2(0, 0)
 
         self.rotation = 90

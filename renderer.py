@@ -95,8 +95,8 @@ def show_that_final_thingy(surf, death_count, time_spent):
     tablet1 = that_final_thingy.subsurface(0, 0, 63, 16)
     tablet2 = that_final_thingy.subsurface(0, 16, 63, 16)
 
-    result1 = get_numbers_on_a_special_tablet_so_it_looks_cool_sorry_for_the_bad_name(death_count)
-    result2 = get_numbers_on_a_special_tablet_so_it_looks_cool_sorry_for_the_bad_name(time_spent)
+    result1 = gnoa(death_count)
+    result2 = gnoa(time_spent)
 
     result_tablet = pg.Surface(((result1.get_width() if (result1.get_width() > result2.get_width()) else result2.get_width()) + 63 + 5, 35), pg.SRCALPHA)
 
