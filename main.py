@@ -2,7 +2,8 @@ import sys
 import re
 import traceback
 
-# todo: remove any usage of pygame.transform.scale_by
+# done: remove any usage of pygame.transform.scale_by
+
 try:
     import pygame as pg
     try:

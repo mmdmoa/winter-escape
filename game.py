@@ -6,6 +6,8 @@ from level import Level
 import time
 from font import *
 from pygame.locals import *
+import core.pygame_ce.functions as pf
+
 
 import os
 here = os.path.abspath(".") + "/"
@@ -39,7 +41,7 @@ class Game:
 
         self.display = pg.display.set_mode((self.WIDTH, self.HEIGHT),FULLSCREEN | SCALED)
         pg.display.set_caption("winter escape")
-        pg.display.set_icon(pg.transform.scale_by(pg.image.load(here+"assets/images/player.png"), 5))
+        pg.display.set_icon(pf.scale_by(pg.image.load(here+"assets/images/player.png"), 5))
 
         self.overlay = pg.Surface((self.WIDTH, self.HEIGHT), pg.SRCALPHA)
         self.overlay.fill(black)
@@ -157,8 +159,8 @@ class Game:
 
         self.wind.draw(self.display, self.level.wind_direction)
 
-        self.display.blit(pg.transform.scale_by(gnoa(get_time_str(self.finish_time - self.start_time)), 3), (0, 0))
-        self.display.blit(pg.transform.scale_by(gnoa(self.death_count), 3), (0, 50))
+        self.display.blit(pf.scale_by(gnoa(get_time_str(self.finish_time - self.start_time)), 3), (0, 0))
+        self.display.blit(pf.scale_by(gnoa(self.death_count), 3), (0, 50))
 
         self.display.blit(self.overlay, (0, 0))
 

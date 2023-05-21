@@ -2,7 +2,7 @@ import pygame.transform
 
 from settings import *
 from font import *
-
+import core.pygame_ce.functions as pf
 
 def convert_images():
     global floor, no_brakes_floor, wind, wall, enter  # , moving
@@ -106,7 +106,7 @@ def show_that_final_thingy(surf, death_count, time_spent):
     result_tablet.blit(result1, (68, 0))
     result_tablet.blit(result2, (68, 19))
 
-    surf.blit(pg.transform.scale_by(result_tablet, 4), (10, 100))
+    surf.blit(pf.scale_by(result_tablet, 4), (10, 100))
 
 
 class Wind:
